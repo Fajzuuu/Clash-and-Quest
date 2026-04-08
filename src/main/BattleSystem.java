@@ -30,7 +30,7 @@ public class BattleSystem {
                 break;
             }
 
-            // --- GILIRAN SISTEM (ENEMY) ---
+            // --- GILIRAN SISTEM (ENEMY) --- 
             System.out.println("\n--- Giliran " + enemy.getName() + " ---");
             calculateAndAttack(enemy, player);
 
