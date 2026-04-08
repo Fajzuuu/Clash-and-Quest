@@ -7,7 +7,7 @@ public class Main {
         // Inisialisasi System Battle
         BattleSystem arena = new BattleSystem();
 
-        // Jalankan Battle
+        // Jalankan Battle 
         arena.startBattle(hero, boss);
     }
 }
