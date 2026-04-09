@@ -10,7 +10,6 @@ public class BattleSystem {
         System.out.println(player.getName() + " VS " + enemy.getName());
 
         while (player.isAlive() && enemy.isAlive()) {
-            // --- GILIRAN PLAYER ---
             System.out.println("\n--- Giliran " + player.getName() + " ---");
             System.out.println("HP Anda: " + player.getHp() + " | HP Musuh: " + enemy.getHp());
             System.out.println("1. Serang");
@@ -30,7 +29,6 @@ public class BattleSystem {
                 break;
             }
 
-            // --- GILIRAN SISTEM (ENEMY) ---
             System.out.println("\n--- Giliran " + enemy.getName() + " ---");
             calculateAndAttack(enemy, player);
 
@@ -44,8 +42,7 @@ public class BattleSystem {
     }
 
     private void calculateAndAttack(Character attacker, Character defender) {
-        // Mekanisme: ATK awal - RNG - def target
-        int rng = random.nextInt(attacker.getAttackPower() / 2); // RNG 0 - 50% ATK
+        int rng = random.nextInt(attacker.getAttackPower() / 2);
         int damageDealt = attacker.getAttackPower() - rng - defender.getDefense();
 
         if (damageDealt < 0) damageDealt = 0;
