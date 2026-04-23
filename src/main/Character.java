@@ -11,7 +11,7 @@ public final class Character {
         setDefense(defense);
     }
 
-    // Getter & Setter dengan Validasi (Encapsulation) 
+    // Getter & Setter
     public String getName() { return name; }
 
     public int getHp() { return hp; }
