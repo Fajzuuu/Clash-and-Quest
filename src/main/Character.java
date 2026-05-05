@@ -1,5 +1,5 @@
-public final class Character {
-    private final String name;
+public class Character {
+    private String name;
     private int hp;
     private int attackPower;
     private int defense;
@@ -36,5 +36,9 @@ public final class Character {
     public void takeDamage(int finalDamage) {
         setHp(this.hp - finalDamage);
         System.out.println(this.name + " menerima " + finalDamage + " damage. Sisa HP: " + this.hp);
+    }
+
+    public int attack() {
+        return this.attackPower;
     }
 }
