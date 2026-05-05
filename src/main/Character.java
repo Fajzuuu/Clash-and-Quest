@@ -1,8 +1,8 @@
 public class Character {
-    private String name;
-    private int hp;
-    private int attackPower;
-    private int defense;
+    protected String name;
+    protected int hp;
+    protected int attackPower;
+    protected int defense;
 
     public Character(String name, int hp, int attackPower, int defense) {
         this.name = name;
@@ -27,6 +27,12 @@ public class Character {
     public int getDefense() { return defense;}
     public void setDefense(int defense) {
         if (defense > 0) this.defense = defense;
+    }
+    
+    public void attack(Character target) {
+        // Method ini wajib ada di parent class agar bisa di-override oleh subclass.
+        // Isinya bisa dibiarkan kosong sementara, 
+        // atau diisi dengan kalkulasi damage standar.
     }
 
     public boolean isAlive() {
