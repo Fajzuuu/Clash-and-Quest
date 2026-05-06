@@ -6,9 +6,9 @@ public class Character {
 
     public Character(String name, int hp, int attackPower, int defense) {
         this.name = name;
-        setHp(hp);
-        setAttackPower(attackPower);
-        setDefense(defense);
+        this.hp = Math.max(0, hp);
+        this.attackPower = attackPower > 0 ? attackPower : 0;
+        this.defense = defense > 0 ? defense : 0;
     }
 
     // Getter & Setter
