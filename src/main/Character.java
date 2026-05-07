@@ -30,9 +30,7 @@ public class Character {
     }
     
     public void attack(Character target) {
-        // Method ini wajib ada di parent class agar bisa di-override oleh subclass.
-        // Isinya bisa dibiarkan kosong sementara, 
-        // atau diisi dengan kalkulasi damage standar.
+
     }
 
     public boolean isAlive() {
