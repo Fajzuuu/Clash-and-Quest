@@ -12,16 +12,18 @@ public class BattleSystem {
         while (player.isAlive() && enemy.isAlive()) {
             System.out.println("\n--- Giliran " + player.getName() + " ---");
             System.out.println("HP Anda: " + player.getHp() + " | HP Musuh: " + enemy.getHp());
-            System.out.println("1. Serang");
-            System.out.println("2. Bertahan (Gunakan Turn ini untuk observasi)");
-            System.out.print("Pilih aksi (1/2): ");
+            System.out.println("1. Serang (Basic Attack)");
+            System.out.println("2. Gunakan Special Ability");
+            System.out.println("3. Bertahan (Gunakan Turn ini untuk observasi)");
+            System.out.print("Pilih aksi (1/2/3): ");
             
             String choice = input.nextLine();
-
             if (choice.equals("1")) {
-                calculateAndAttack(player, enemy);
+                player.attack(enemy); 
+            } else if (choice.equals("2")) {
+                player.specialAbility(enemy);
             } else {
-                System.out.println("Anda bersiap-siap...");
+                System.out.println("Anda bersiap-siap memperkuat pertahanan...");
             }
 
             if (!enemy.isAlive()) {
@@ -30,7 +32,12 @@ public class BattleSystem {
             }
 
             System.out.println("\n--- Giliran " + enemy.getName() + " ---");
-            calculateAndAttack(enemy, player);
+
+            if (random.nextInt(100) < 25) {
+                enemy.specialAbility(player);
+            } else {
+                enemy.attack(player);
+            }
 
             if (!player.isAlive()) {
                 System.out.println("\nAnda telah dikalahkan oleh " + enemy.getName() + "...");
@@ -39,15 +46,5 @@ public class BattleSystem {
             
             System.out.println("-----------------------------------");
         }
-    }
-
-    private void calculateAndAttack(Character attacker, Character defender) {
-        int rng = random.nextInt(attacker.getAttackPower() / 2);
-        int damageDealt = attacker.getAttackPower() - rng - defender.getDefense();
-
-        if (damageDealt < 0) damageDealt = 0;
-
-        System.out.println(attacker.getName() + " meluncurkan serangan!");
-        defender.takeDamage(damageDealt);
     }
 }
