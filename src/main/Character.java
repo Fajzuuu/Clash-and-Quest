@@ -4,6 +4,14 @@ public class Character {
     protected int attackPower;
     protected int defense;
 
+    protected static int BaseHp = 100;
+    protected static int BaseAttack = 40;
+    protected static int BaseDefense = 20;
+
+    protected static int CalculateByPercentage(int base, double percentage) {
+        return (int)(base+(base * percentage));
+    }
+
     public Character(String name, int hp, int attackPower, int defense) {
         this.name = name;
         this.hp = Math.max(0, hp);

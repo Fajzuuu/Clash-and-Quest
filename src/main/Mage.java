@@ -1,7 +1,9 @@
 public class Mage extends Character {
     public Mage(String name) {
-        // Memanggil constructor Character: name, hp, attack, defense
-        super(name, 90, 75, 15);
+        super(
+            name, 
+            CalculateByPercentage(BaseHp, 0.1), 
+            CalculateByPercentage(BaseAttack, 0.5), 
+            CalculateByPercentage(BaseDefense, 0.1));
     }
-  
 }

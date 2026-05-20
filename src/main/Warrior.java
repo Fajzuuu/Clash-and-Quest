@@ -1,7 +1,9 @@
 public class Warrior extends Character {
     public Warrior(String name) {
-        // Memanggil constructor Character: name, hp, attack, defense
-        super(name, 150, 45, 25);
+        super(
+            name, 
+            CalculateByPercentage(BaseHp, 0.5), 
+            CalculateByPercentage(BaseAttack, 0.25), 
+            CalculateByPercentage(BaseDefense, 0.5));
     }
-
 }
