@@ -38,7 +38,21 @@ public class Character {
     }
     
     public void attack(Character target) {
+        int damage = this.attackPower - target.getDefense();
+        if (damage < 1) {
+            damage = 1;
+        }
+        System.out.println(this.name + "Menyerang " + target.getName() + "!");
+        target.takeDamage(damage);
+    }
+    public void specialAbility(Character target) {
+    int damage = (int)(this.attackPower * 1.2) - target.getDefense();
+    if (damage < 1) {
+        damage = 1;
+    }
 
+    System.out.println(this.name + " menggunakan ability dasar!");
+    target.takeDamage(damage);
     }
 
     public boolean isAlive() {
@@ -53,4 +67,5 @@ public class Character {
     public int attack() {
         return this.attackPower;
     }
+    
 }
