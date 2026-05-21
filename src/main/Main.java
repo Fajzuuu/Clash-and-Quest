@@ -25,29 +25,24 @@ public class Main {
         else if (choice == 2) player = new Mage(name);
         else player = new Archer(name);
 
-        // 1. Membuat object karakter (Struktur Asli Kamu)
         Warrior arthur = new Warrior("Arthur (Warrior)");
         Mage merlin = new Mage("Merlin (Mage)");
         Archer sparrow = new Archer("Sparrow (Archer)");
 
-        // 2. Menampilkan status awal
         System.out.println("\n=== STATUS AWAL ===");
         System.out.println(arthur.getName() + " | HP: " + arthur.getHp() + " | Atk: " + arthur.getAttackPower() + " | Def: " + arthur.getDefense());
         System.out.println(merlin.getName() + " | HP: " + merlin.getHp() + " | Atk: " + merlin.getAttackPower() + " | Def: " + merlin.getDefense());
         System.out.println(sparrow.getName() + " | HP: " + sparrow.getHp() + " | Atk: " + sparrow.getAttackPower() + " | Def: " + sparrow.getDefense());
         System.out.println();
 
-        // 3. Test serangan manual (Override Test)
         System.out.println("=== TEST CUSTOM ATTACK (OVERRIDE) ===");
         sparrow.attack(arthur); 
         arthur.attack(sparrow);
         System.out.println();
 
-        // 4. Masukkan ke dalam BattleSystem
         System.out.println("=== MASUK KE ARENA BATTLE SYSTEM ===");
         BattleSystem arena = new BattleSystem();
         
-        // Bertarung menggunakan karakter yang dipilih user (player) melawan Merlin
         arena.startBattle(player, merlin);
 
         scanner.close();
