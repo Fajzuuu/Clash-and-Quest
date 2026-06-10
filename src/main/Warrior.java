@@ -1,4 +1,4 @@
-public class Warrior extends Character {
+public class Warrior extends Character { //error karena diubah menjadi abstract class, jadi harus di override semua method abstractnya
     public Warrior(String name) {
         super(
             name, 

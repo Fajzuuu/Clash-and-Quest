@@ -1,4 +1,4 @@
-public class Archer extends Character {
+public class Archer extends Character { //error karena diubah menjadi abstract class, jadi harus di override semua method abstractnya
     private double criticalChance;
 
     public Archer(String name) {

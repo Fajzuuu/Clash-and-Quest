@@ -16,14 +16,6 @@ public class Main {
         System.out.println(">>=======================================================================<<");
         System.out.print("Masukkan nama karakter Anda: ");
         String name = scanner.nextLine();
-        System.out.println("Pilih Class: 1. Warrior | 2. Mage | 3. Archer");
-        System.out.print("Pilihan: ");
-        int choice = scanner.nextInt();
-
-        Character player;
-        if (choice == 1) player = new Warrior(name);
-        else if (choice == 2) player = new Mage(name);
-        else player = new Archer(name);
 
         Warrior arthur = new Warrior("Arthur (Warrior)");
         Mage merlin = new Mage("Merlin (Mage)");
@@ -35,10 +27,19 @@ public class Main {
         System.out.println(sparrow.getName() + " | HP: " + sparrow.getHp() + " | Atk: " + sparrow.getAttackPower() + " | Def: " + sparrow.getDefense());
         System.out.println();
 
-        System.out.println("=== TEST CUSTOM ATTACK (OVERRIDE) ===");
-        sparrow.attack(arthur); 
-        arthur.attack(sparrow);
-        System.out.println();
+        System.out.println("Pilih Class: 1. Warrior | 2. Mage | 3. Archer");
+        System.out.print("Pilihan: ");
+        int choice = scanner.nextInt();
+
+        Character player;
+        if (choice == 1) player = new Warrior(name);
+        else if (choice == 2) player = new Mage(name);
+        else player = new Archer(name);
+
+        //System.out.println("=== TEST CUSTOM ATTACK (OVERRIDE) ===");
+        //sparrow.attack(arthur); 
+        //arthur.attack(sparrow);
+        //System.out.println();
 
         System.out.println("=== MASUK KE ARENA BATTLE SYSTEM ===");
         BattleSystem arena = new BattleSystem();

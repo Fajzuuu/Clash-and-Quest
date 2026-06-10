@@ -1,4 +1,4 @@
-public class Mage extends Character {
+public class Mage extends Character { //error karena diubah menjadi abstract class, jadi harus di override semua method abstractnya
     public Mage(String name) {
         super(
             name, 

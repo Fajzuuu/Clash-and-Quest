@@ -1,4 +1,4 @@
-public class Character {
+public abstract class Character {
     protected String name;
     protected int hp;
     protected int attackPower;
@@ -37,23 +37,9 @@ public class Character {
         if (defense > 0) this.defense = defense;
     }
     
-    public void attack(Character target) {
-        int damage = this.attackPower - target.getDefense();
-        if (damage < 1) {
-            damage = 1;
-        }
-        System.out.println(this.name + "Menyerang " + target.getName() + "!");
-        target.takeDamage(damage);
-    }
-    public void specialAbility(Character target) {
-    int damage = (int)(this.attackPower * 1.2) - target.getDefense();
-    if (damage < 1) {
-        damage = 1;
-    }
-
-    System.out.println(this.name + " menggunakan ability dasar!");
-    target.takeDamage(damage);
-    }
+    public abstract void attack(Character target) ;
+    
+    public abstract void specialAbility(Character target) ;
 
     public boolean isAlive() {
         return this.hp > 0;
@@ -67,5 +53,7 @@ public class Character {
     public int attack() {
         return this.attackPower;
     }
+
+    public abstract String getClassName();
     
 }
