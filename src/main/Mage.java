@@ -1,4 +1,4 @@
-public class Mage extends Character { //error karena diubah menjadi abstract class, jadi harus di override semua method abstractnya
+public class Mage extends Character {
     public Mage(String name) {
         super(
             name, 
@@ -26,5 +26,9 @@ public class Mage extends Character { //error karena diubah menjadi abstract cla
         damageSihir = Math.max(15, damageSihir);
 
         target.takeDamage(damageSihir);
+    }
+    @Override
+    public String getClassName() {
+        return "Mage";
     }
 }

@@ -1,4 +1,4 @@
-public class Warrior extends Character { //error karena diubah menjadi abstract class, jadi harus di override semua method abstractnya
+public class Warrior extends Character {
     public Warrior(String name) {
         super(
             name, 
@@ -23,5 +23,9 @@ public class Warrior extends Character { //error karena diubah menjadi abstract 
         int tambahanDefense = (int) (this.defense * 0.5);
         this.setDefense(this.defense + tambahanDefense);
         System.out.println("Defense " + this.name + " meningkat sebanyak " + tambahanDefense + " poin!");
+    }
+    @Override
+    public String getClassName() {
+        return "Warrior";
     }
 }
