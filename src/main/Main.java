@@ -4,7 +4,15 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // --- Tambahan Menu CLI ---
+        // =========================================================================
+        // TUGAS VALIDASI ABSTRACT CLASS (Anggota 3)
+        // Hapus tanda komentar '//' di bawah ini untuk menunjukkan compile error pada laporan!
+        // Error: "Character is abstract; cannot be instantiated"
+        //
+        // Character testAbstract = new Character("Dummy", 100, 10, 10);
+        // =========================================================================
+
+        // --- Menu CLI ---
         System.out.println(">>=======================================================================<<");
         System.out.println("||      ____ _           _        ___      ___                  _        ||");
         System.out.println("||     / ___| | __ _ ___| |__    ( _ )    / _ \\ _   _  ___  ___| |_      ||");
@@ -35,11 +43,6 @@ public class Main {
         if (choice == 1) player = new Warrior(name);
         else if (choice == 2) player = new Mage(name);
         else player = new Archer(name);
-
-        //System.out.println("=== TEST CUSTOM ATTACK (OVERRIDE) ===");
-        //sparrow.attack(arthur); 
-        //arthur.attack(sparrow);
-        //System.out.println();
 
         System.out.println("=== MASUK KE ARENA BATTLE SYSTEM ===");
         BattleSystem arena = new BattleSystem();

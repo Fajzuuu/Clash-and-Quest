@@ -1,4 +1,4 @@
-public class Archer extends Character { //error karena diubah menjadi abstract class, jadi harus di override semua method abstractnya
+public class Archer extends Character { 
     private double criticalChance;
 
     public Archer(String name) {
@@ -7,7 +7,7 @@ public class Archer extends Character { //error karena diubah menjadi abstract c
             CalculateByPercentage(BaseHp, 0.25), 
             CalculateByPercentage(BaseAttack, 0.25),
             CalculateByPercentage(BaseDefense,0.1));
-        this.criticalChance = 0.30; 
+        this.criticalChance = 0.30; // Fitur Critical Hit 30%
     }
 
     public void displaySpecialStat() {
@@ -16,7 +16,6 @@ public class Archer extends Character { //error karena diubah menjadi abstract c
 
     @Override
     public void attack(Character target) {
-
         int damage = this.attackPower - target.getDefense();
         damage = Math.max(1, damage); 
 
@@ -33,10 +32,14 @@ public class Archer extends Character { //error karena diubah menjadi abstract c
     @Override
     public void specialAbility(Character target) {
         System.out.println(this.name + " menggunakan skill [Rain of Arrows]! 🏹🌧️");
-        
         int trueDamage = this.attackPower + 10; 
-        
         System.out.println("Hujan panah mengabaikan pertahanan musuh!");
         target.takeDamage(trueDamage);
+    }
+
+    // --- TAMBAHAN ANGGOTA 3: Override getClassName ---
+    @Override
+    public String getClassName() {
+        return "Archer";
     }
 }
