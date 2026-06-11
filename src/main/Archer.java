@@ -37,7 +37,6 @@ public class Archer extends Character {
         target.takeDamage(trueDamage);
     }
 
-    // --- TAMBAHAN ANGGOTA 3: Override getClassName ---
     @Override
     public String getClassName() {
         return "Archer";

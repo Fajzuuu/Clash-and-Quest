@@ -9,6 +9,6 @@ public class Weapon extends Item {
     @Override
     public void use(Character target) {
         target.setAttackPower(target.getAttackPower() + attackBonus);
-        System.out.println("⚔️ " + target.getName() + " melengkapi " + this.name + "! Attack Power permanen meningkat +" + attackBonus + "!");
+        System.out.println(target.getName() + " melengkapi " + this.name + "! Attack Power permanen meningkat +" + attackBonus + "!");
     }
 }
