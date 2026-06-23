@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public abstract class Character {
     protected String name;
     protected int hp;
@@ -55,4 +57,41 @@ public abstract class Character {
     }
 
     public abstract String getClassName();
+
+    protected ArrayList<Item> inventory = new ArrayList<>();
+
+    public ArrayList<Item> getInventory() {
+    return inventory;
+    }
+
+    public void addItem(Item item) {
+    inventory.add(item);
+    System.out.println(item.getName() + " ditambahkan ke inventory.");
+    }
+
+    public void showInventory() {
+    System.out.println("=== INVENTORY " + name + " ===");
+
+    if (inventory.isEmpty()) {
+        System.out.println("Kosong");
+        return;
+    }
+
+    for (int i = 0; i < inventory.size(); i++) {
+        System.out.println((i + 1) + ". " + inventory.get(i).getName());
+    }
+    }
+
+    public void useItem(int index) {
+    if (index < 0 || index >= inventory.size()) {
+        System.out.println("Item tidak valid!");
+        return;
+    }
+
+    Item item = inventory.get(index);
+    item.use(this);
+
+    inventory.remove(index);
+    System.out.println(item.getName() + " berhasil digunakan.");
+    }
 }

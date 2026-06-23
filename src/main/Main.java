@@ -36,6 +36,10 @@ public class Main {
         else if (choice == 2) player = new Mage(name);
         else player = new Archer(name);
 
+        player.addItem(new Potion("Mega Potion", 40));
+        player.addItem(new Weapon("Pedang", 15));
+        player.addItem(new Armor("Baju Zirah", 10));
+
         System.out.println("=== MASUK KE ARENA BATTLE SYSTEM ===");
         BattleSystem arena = new BattleSystem();
         

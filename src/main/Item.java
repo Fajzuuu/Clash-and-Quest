@@ -9,5 +9,6 @@ public abstract class Item {
         return name;
     }
 
+    public abstract String getDescription();
     public abstract void use(Character target);
 }

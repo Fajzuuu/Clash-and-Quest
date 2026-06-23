@@ -5,12 +5,6 @@ public class BattleSystem {
     private final Scanner input = new Scanner(System.in);
     private final Random random = new Random();
 
-    // --- TAMBAHAN ANGGOTA 3: Inisialisasi Item untuk Battle ---
-    private Item potion = new Potion("Mega Potion", 40);
-    private Item weaponUpgrade = new Weapon("Sharpened Edge / Enchanted Bow Strings", 15);
-    private boolean potionUsed = false;
-    private boolean weaponUsed = false;
-
     public void startBattle(Character player, Character enemy) {
         System.out.println("=== PERTARUNGAN DIMULAI ===");
         System.out.println(player.getName() + " VS " + enemy.getName());
@@ -30,21 +24,28 @@ public class BattleSystem {
             } else if (choice.equals("2")) {
                 player.specialAbility(enemy);
             } else if (choice.equals("4")) {
-                // --- INTEGRASI SISTEM ITEM ---
                 System.out.println("\nPilih Item yang ingin digunakan:");
-                System.out.println("1. " + (potionUsed ? "[HABIS] " : "") + potion.getName() + " (+40 HP)");
-                System.out.println("2. " + (weaponUsed ? "[HABIS] " : "") + weaponUpgrade.getName() + " (+15 ATK)");
+                if (player.getInventory().isEmpty()) {
+                    System.out.println("Inventory kosong!");
+                    continue;
+                }
+
+                for (int i = 0; i < player.getInventory().size(); i++) {
+                    Item item = player.getInventory().get(i);
+                    System.out.println((i + 1) + ". " + item.getName());
+                }
+
                 System.out.print("Pilihan Item: ");
-                String itemChoice = input.nextLine();
-                
-                if (itemChoice.equals("1") && !potionUsed) {
-                    potion.use(player);
-                    potionUsed = true;
-                } else if (itemChoice.equals("2") && !weaponUsed) {
-                    weaponUpgrade.use(player);
-                    weaponUsed = true;
+                int itemChoice = Integer.parseInt(input.nextLine()) - 1;
+
+                if (itemChoice >= 0 && itemChoice < player.getInventory().size()) {
+                    Item selectedItem = player.getInventory().get(itemChoice);
+                    selectedItem.use(player);
+
+                    // karena quantity = 1 → langsung hapus
+                    player.getInventory().remove(itemChoice);
                 } else {
-                    System.out.println("Item tidak valid atau sudah habis digunakan! Giliran Anda terbuang.");
+                    System.out.println("Pilihan tidak valid!");
                 }
             } else {
                 System.out.println("Anda bersiap-siap memperkuat pertahanan...");
