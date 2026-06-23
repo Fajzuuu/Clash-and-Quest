@@ -22,7 +22,7 @@ public class Archer extends Character {
         System.out.println(this.name + " menembakkan panah tajam ke arah " + target.getName() + "!");
 
         if (Math.random() < this.criticalChance) {
-            System.out.println("🎯 CRITICAL HIT! Serangan mengenai titik lemah, damage x2! 🎯");
+            System.out.println("CRITICAL HIT! Serangan mengenai titik lemah, damage x2!");
             damage *= 2;
         }
 
@@ -31,7 +31,7 @@ public class Archer extends Character {
 
     @Override
     public void specialAbility(Character target) {
-        System.out.println(this.name + " menggunakan skill [Rain of Arrows]! 🏹🌧️");
+        System.out.println(this.name + " menggunakan skill [Rain of Arrows]!");
         int trueDamage = this.attackPower + 10; 
         System.out.println("Hujan panah mengabaikan pertahanan musuh!");
         target.takeDamage(trueDamage);

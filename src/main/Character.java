@@ -55,5 +55,4 @@ public abstract class Character {
     }
 
     public abstract String getClassName();
-    
 }

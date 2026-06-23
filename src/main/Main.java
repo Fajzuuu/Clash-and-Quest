@@ -4,14 +4,6 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // =========================================================================
-        // TUGAS VALIDASI ABSTRACT CLASS (Anggota 3)
-        // Hapus tanda komentar '//' di bawah ini untuk menunjukkan compile error pada laporan!
-        // Error: "Character is abstract; cannot be instantiated"
-        //
-        // Character testAbstract = new Character("Dummy", 100, 10, 10);
-        // =========================================================================
-
         // --- Menu CLI ---
         System.out.println(">>=======================================================================<<");
         System.out.println("||      ____ _           _        ___      ___                  _        ||");
