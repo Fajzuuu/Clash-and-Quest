@@ -6,6 +6,9 @@ public abstract class Character {
     protected int attackPower;
     protected int defense;
 
+    protected int level;
+    protected int exp;
+
     protected static int BaseHp = 100;
     protected static int BaseAttack = 40;
     protected static int BaseDefense = 20;
@@ -19,6 +22,9 @@ public abstract class Character {
         this.hp = Math.max(0, hp);
         this.attackPower = attackPower > 0 ? attackPower : 0;
         this.defense = defense > 0 ? defense : 0;
+
+        this.level = 1;
+        this.exp = 0; 
     }
 
     // Getter & Setter
@@ -57,6 +63,34 @@ public abstract class Character {
     }
 
     public abstract String getClassName();
+
+    public int getLevel() { return level; }
+    public int getExp() { return exp; }
+
+    public void gainExp(int amount) {
+        this.exp += amount;
+        System.out.println(this.name + " mendapatkan " + amount + " EXP!");
+        
+        if (this.exp >= 100) {
+            levelUp();
+        }
+    }
+
+    private void levelUp() {
+        this.level++;
+        this.exp -= 100; 
+        
+        int hpBaru = CalculateByPercentage(this.hp, 0.20);
+        int attackBaru = CalculateByPercentage(this.attackPower, 0.15); 
+        int defenseBaru = CalculateByPercentage(this.defense, 0.15); 
+        
+        this.setHp(hpBaru);
+        this.setAttackPower(attackBaru);
+        this.setDefense(defenseBaru);
+
+        System.out.println("\n>> LEVEL UP! " + this.name + " naik ke Level " + this.level + " <<");
+        System.out.println("Status Meningkat: HP (" + this.hp + "), Atk (" + this.attackPower + "), Def (" + this.defense + ")\n");
+    }
 
     protected ArrayList<Item> inventory = new ArrayList<>();
 

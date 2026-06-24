@@ -10,8 +10,8 @@ public class BattleSystem {
         System.out.println(player.getName() + " VS " + enemy.getName());
 
         while (player.isAlive() && enemy.isAlive()) {
-            System.out.println("\n--- Giliran " + player.getName() + " ---");
-            System.out.println("HP Anda: " + player.getHp() + " | HP Musuh: " + enemy.getHp());
+            System.out.println("\n--- Giliran " + player.getName() + " (Lv. " + player.getLevel() + ") ---");
+            System.out.println("HP Anda: " + player.getHp() + " | EXP Anda: " + player.getExp() + "/100 | HP Musuh: " + enemy.getHp()); 
             System.out.println("1. Serang (Basic Attack)");
             System.out.println("2. Gunakan Special Ability");
             System.out.println("3. Bertahan (Gunakan Turn ini untuk observasi)");
@@ -53,9 +53,15 @@ public class BattleSystem {
 
             if (!enemy.isAlive()) {
                 System.out.println("\n" + enemy.getName() + " kalah! Selamat, Anda menang!");
+                
+                System.out.println("-----------------------------------");
+                System.out.println("Mengkalkulasi Battle Rewards...");
+                player.gainExp(50);
+                System.out.println("-----------------------------------");
+                
                 break;
             }
-
+            
             System.out.println("\n--- Giliran " + enemy.getName() + " ---");
 
             if (random.nextInt(100) < 25) {
