@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -17,34 +18,54 @@ public class Main {
         System.out.print("Masukkan nama karakter Anda: ");
         String name = scanner.nextLine();
 
-        Warrior arthur = new Warrior("Arthur (Warrior)");
-        Mage merlin = new Mage("Merlin (Mage)");
-        Archer sparrow = new Archer("Sparrow (Archer)");
-
-        System.out.println("\n=== STATUS AWAL ===");
-        System.out.println(arthur.getName() + " | HP: " + arthur.getHp() + " | Atk: " + arthur.getAttackPower() + " | Def: " + arthur.getDefense());
-        System.out.println(merlin.getName() + " | HP: " + merlin.getHp() + " | Atk: " + merlin.getAttackPower() + " | Def: " + merlin.getDefense());
-        System.out.println(sparrow.getName() + " | HP: " + sparrow.getHp() + " | Atk: " + sparrow.getAttackPower() + " | Def: " + sparrow.getDefense());
-        System.out.println();
-
-        System.out.println("Pilih Class: 1. Warrior | 2. Mage | 3. Archer");
+        System.out.println("Pilih Class: 1. Warrior | 2. Mage | 3. Archer | 4. Assassin | 5. Healer");
         System.out.print("Pilihan: ");
         int choice = scanner.nextInt();
 
         Character player;
         if (choice == 1) player = new Warrior(name);
         else if (choice == 2) player = new Mage(name);
-        else player = new Archer(name);
+        else if (choice == 3) player = new Archer(name);
+        else if (choice == 4) player = new Assassin(name); 
+        else player = new Healer(name); // Handler Class Baru Healer
 
         player.addItem(new Potion("Mega Potion", 40));
-        player.addItem(new Weapon("Pedang", 15));
-        player.addItem(new Armor("Baju Zirah", 10));
+        player.addItem(new Weapon("Pedang Mistik", 15));
+        player.addItem(new Armor("Baju Zirah Baja", 10));
 
-        System.out.println("=== MASUK KE ARENA BATTLE SYSTEM ===");
+        System.out.println("\n=== MASUK KE ARENA BATTLE SYSTEM ===");
         BattleSystem arena = new BattleSystem();
         
-        arena.startBattle(player, merlin);
+        Character enemy1 = generateRandomEnemy("Wave 1", false);
+        Character bossEnemy = generateRandomEnemy("Wave 2: Raid Boss", true);
+
+        arena.startBattle(player, enemy1, bossEnemy);
 
         scanner.close();
+    }
+
+    private static Character generateRandomEnemy(String title, boolean isBoss) {
+        Random rand = new Random();
+        
+        String[] poolNames = {"Gorgon", "Viper", "Malaketh", "ShadowFang", "Xanthor", "Kaelthas", "Eldrin"};
+        String chosenName = poolNames[rand.nextInt(poolNames.length)] + " (" + title + ")";
+        
+        int classRoll = rand.nextInt(5);
+        Character enemy;
+        
+        switch (classRoll) {
+            case 0: enemy = new Warrior(chosenName); break;
+            case 1: enemy = new Mage(chosenName); break;
+            case 2: enemy = new Archer(chosenName); break;
+            case 3: enemy = new Assassin(chosenName); break;
+            default: enemy = new Healer(chosenName); break;
+        }
+        
+        if (isBoss) {
+            enemy.setHp(enemy.getHp() + 70);       
+            enemy.setAttackPower(enemy.getAttackPower() + 15);
+        }
+        
+        return enemy;
     }
 }
