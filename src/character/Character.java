@@ -10,6 +10,7 @@ public abstract class Character {
 
     protected int level;
     protected int exp;
+    protected int gold;
 
     protected static int BaseHp = 100;
     protected static int BaseAttack = 40;
@@ -26,7 +27,8 @@ public abstract class Character {
         this.defense = defense > 0 ? defense : 0;
 
         this.level = 1;
-        this.exp = 0; 
+        this.exp = 0;
+        this.gold = 50; // Gold awal
     }
 
     // Getter & Setter
@@ -68,6 +70,24 @@ public abstract class Character {
 
     public int getLevel() { return level; }
     public int getExp() { return exp; }
+
+    public int getGold() { return gold; }
+
+    public void addGold(int amount) {
+        if (amount > 0) {
+            this.gold += amount;
+            System.out.println("+" + amount + " Gold! Total Gold: " + this.gold);
+        }
+    }
+
+    public boolean spendGold(int amount) {
+        if (amount > 0 && this.gold >= amount) {
+            this.gold -= amount;
+            return true;
+        }
+        System.out.println("Gold tidak cukup! Kamu punya " + this.gold + " Gold.");
+        return false;
+    }
 
     public void gainExp(int amount) {
         this.exp += amount;

@@ -7,7 +7,7 @@ public class Weapon implements Item {
     private int attackBonus;
     private int price;
 
-    public Weapon(String name, int attackBonus) {
+    public Weapon(String name, int attackBonus, int price) {
         this.name = name;
         this.attackBonus = attackBonus;
         this.price = price;
@@ -16,6 +16,10 @@ public class Weapon implements Item {
     @Override
     public String getName() {
         return name;
+    }
+
+    public int getAttackBonus() {
+        return attackBonus;
     }
 
     @Override
@@ -31,5 +35,6 @@ public class Weapon implements Item {
     @Override
     public void use(Character player) {
         player.setAttackPower(player.getAttackPower() + attackBonus);
+        System.out.println("[" + name + "] Dipasang! Attack +" + attackBonus + ". Total Attack: " + player.getAttackPower());
     }
 }

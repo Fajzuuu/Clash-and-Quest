@@ -63,6 +63,16 @@ public class BattleSystem {
                     System.out.println("-----------------------------------");
                     System.out.println("Mengkalkulasi Battle Rewards...");
                     player.gainExp(50);
+
+                    // [Anggota 3] Reward Gold setelah menang
+                    int goldReward = (i == enemies.length - 1) ? 200 : 100; // Boss beri 200, minion 100
+                    System.out.println("Kamu mendapatkan +" + goldReward + " Gold!");
+                    player.addGold(goldReward);
+
+                    // [Anggota 3] Loot item dari musuh (acak)
+                    src.item.Item drop = generateEnemyDrop(i == enemies.length - 1);
+                    src.item.LootSystem.enemyDrop(player, drop);
+
                     System.out.println("-----------------------------------");
                     break;
                 }
@@ -90,5 +100,21 @@ public class BattleSystem {
         }
         
         System.out.println("\nSELAMAT! Anda berhasil mengalahkan seluruh musuh dan menjuarai Arena!");
+    }
+
+    /**
+     * [Anggota 3] Menghasilkan drop item acak dari musuh.
+     * Boss selalu menjatuhkan item, minion 50%.
+     */
+    private src.item.Item generateEnemyDrop(boolean isBoss) {
+        if (!isBoss && random.nextInt(100) < 50) {
+            return null; // 50% chance tidak drop
+        }
+        int roll = random.nextInt(3);
+        switch (roll) {
+            case 0: return new src.item.Potion("Ramuan Jatuhan",  40, 0);
+            case 1: return new src.item.Weapon("Pedang Rampasan", 12, 0);
+            default: return new src.item.Armor("Zirah Rampasan",  10, 0);
+        }
     }
 }

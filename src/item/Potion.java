@@ -7,7 +7,7 @@ public class Potion implements Item {
     private int healAmount;
     private int price;
 
-    public Potion(String name, int healAmount) {
+    public Potion(String name, int healAmount, int price) {
         this.name = name;
         this.healAmount = healAmount;
         this.price = price;
@@ -16,6 +16,10 @@ public class Potion implements Item {
     @Override
     public String getName() {
         return name;
+    }
+
+    public int getHealAmount() {
+        return healAmount;
     }
 
     @Override
@@ -30,6 +34,8 @@ public class Potion implements Item {
 
     @Override
     public void use(Character player) {
-    player.setHp(player.getHp() + healAmount);
+        int before = player.getHp();
+        player.setHp(player.getHp() + healAmount);
+        System.out.println("[" + name + "] Memulihkan HP sebesar +" + healAmount + ". HP: " + before + " -> " + player.getHp());
     }
 }
