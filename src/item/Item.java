@@ -1,17 +1,13 @@
 package src.item;
 import src.character.Character;
 
-public abstract class Item {
-    protected String name;
+public interface Item {
 
-    public Item(String name) {
-        this.name = name;
-    }
+    String getName();
 
-    public String getName() {
-        return name;
-    }
+    String getDescription();
 
-    public abstract String getDescription();
-    public abstract void use(Character target);
+    int getPrice();
+
+    void use(Character player);
 }

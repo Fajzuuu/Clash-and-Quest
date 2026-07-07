@@ -1,20 +1,35 @@
 package src.item;
 import src.character.Character;
 
-public class Potion extends Item {
+public class Potion implements Item {
+
+    private String name;
     private int healAmount;
+    private int price;
 
     public Potion(String name, int healAmount) {
-        super(name);
+        this.name = name;
         this.healAmount = healAmount;
+        this.price = price;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 
     @Override
     public String getDescription() {
-    return "(+" + healAmount + " HP)";
+        return "Heal +" + healAmount;
     }
-    public void use(Character target) {
-        target.setHp(target.getHp() + healAmount);
-        System.out.println( target.getName() + " menggunakan " + this.name + " dan memulihkan " + healAmount + " HP!");
+
+    @Override
+    public int getPrice() {
+        return price;
+    }
+
+    @Override
+    public void use(Character player) {
+    player.setHp(player.getHp() + healAmount);
     }
 }

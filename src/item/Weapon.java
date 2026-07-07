@@ -1,20 +1,35 @@
 package src.item;
 import src.character.Character;
 
-public class Weapon extends Item {
+public class Weapon implements Item {
+
+    private String name;
     private int attackBonus;
+    private int price;
 
     public Weapon(String name, int attackBonus) {
-        super(name);
+        this.name = name;
         this.attackBonus = attackBonus;
+        this.price = price;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 
     @Override
     public String getDescription() {
-    return "(+" + attackBonus + " ATK)";
+        return "Attack +" + attackBonus;
     }
-    public void use(Character target) {
-        target.setAttackPower(target.getAttackPower() + attackBonus);
-        System.out.println(target.getName() + " melengkapi " + this.name + "! Attack Power permanen meningkat +" + attackBonus + "!");
+
+    @Override
+    public int getPrice() {
+        return price;
+    }
+
+    @Override
+    public void use(Character player) {
+        player.setAttackPower(player.getAttackPower() + attackBonus);
     }
 }
