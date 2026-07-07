@@ -1,0 +1,8 @@
+name=Anda
+class=Archer
+hp=0
+attack=50
+defense=22
+level=1
+exp=0
+inventory=Mega Potion,Belati Mistis,Baju Zirah Baja,Mega Potion,Belati Mistis,Baju Zirah Baja,
