@@ -5,7 +5,6 @@ public class BattleSystem {
     private final Scanner input = new Scanner(System.in);
     private final Random random = new Random();
 
-    // Menggunakan varargs agar bisa menerima satu atau banyak musuh sekaligus
     public void startBattle(Character player, Character... enemies) {
         System.out.println("=== PERTARUNGAN ARENA DIMULAI ===");
         

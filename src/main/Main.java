@@ -27,10 +27,10 @@ public class Main {
         else if (choice == 2) player = new Mage(name);
         else if (choice == 3) player = new Archer(name);
         else if (choice == 4) player = new Assassin(name); 
-        else player = new Healer(name); // Handler Class Baru Healer
+        else player = new Healer(name);
 
         player.addItem(new Potion("Mega Potion", 40));
-        player.addItem(new Weapon("Pedang Mistik", 15));
+        player.addItem(new Weapon("Belati Mistis", 15));
         player.addItem(new Armor("Baju Zirah Baja", 10));
 
         System.out.println("\n=== MASUK KE ARENA BATTLE SYSTEM ===");
