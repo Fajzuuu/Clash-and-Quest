@@ -1,3 +1,5 @@
+package src.Battle;
+
 import java.util.Random;
 import java.util.Scanner;
 import src.character.Character;

@@ -3,6 +3,7 @@ import java.util.Scanner;
 import src.character.Character;
 import src.character.*;
 import src.item.*;
+import src.Battle.BattleSystem;
 
 public class Main {
     public static void main(String[] args) {
@@ -34,49 +35,68 @@ public class Main {
         int choice = scanner.nextInt();
 
         Character player;
-        if (choice == 1) player = new Warrior(name);
-        else if (choice == 2) player = new Mage(name);
-        else if (choice == 3) player = new Archer(name);
-        else if (choice == 4) player = new Assassin(name); 
-        else player = new Healer(name);
+        if (choice == 1)
+            player = new Warrior(name);
+        else if (choice == 2)
+            player = new Mage(name);
+        else if (choice == 3)
+            player = new Archer(name);
+        else if (choice == 4)
+            player = new Assassin(name);
+        else
+            player = new Healer(name);
 
         player.addItem(new Potion("Mega Potion", 40));
         player.addItem(new Weapon("Belati Mistis", 15));
         player.addItem(new Armor("Baju Zirah Baja", 10));
 
+        // [Anggota 2]: Menjalankan Story Mode dan menangkap Boss yang dikembalikan
+        Character storyBoss = src.story.StoryManager.playStoryMode(scanner);
+
         System.out.println("\n=== MASUK KE ARENA BATTLE SYSTEM ===");
         BattleSystem arena = new BattleSystem();
-        
-        Character enemy1 = generateRandomEnemy("Wave 1", false);
-        Character bossEnemy = generateRandomEnemy("Wave 2: Raid Boss", true);
 
-        arena.startBattle(player, enemy1, bossEnemy);
+        // Minion masih digenerate secara acak
+        Character enemy1 = generateRandomEnemy("Wave 1", false);
+        
+        // Memasukkan Boss dari Story Mode ke dalam Battle System
+        arena.startBattle(player, enemy1, storyBoss);
 
         scanner.close();
     }
 
     private static Character generateRandomEnemy(String title, boolean isBoss) {
         Random rand = new Random();
-        
-        String[] poolNames = {"Gorgon", "Viper", "Malaketh", "ShadowFang", "Xanthor", "Kaelthas", "Eldrin"};
+
+        String[] poolNames = { "Gorgon", "Viper", "Malaketh", "ShadowFang", "Xanthor", "Kaelthas", "Eldrin" };
         String chosenName = poolNames[rand.nextInt(poolNames.length)] + " (" + title + ")";
-        
+
         int classRoll = rand.nextInt(5);
         Character enemy;
-        
+
         switch (classRoll) {
-            case 0: enemy = new Warrior(chosenName); break;
-            case 1: enemy = new Mage(chosenName); break;
-            case 2: enemy = new Archer(chosenName); break;
-            case 3: enemy = new Assassin(chosenName); break;
-            default: enemy = new Healer(chosenName); break;
+            case 0:
+                enemy = new Warrior(chosenName);
+                break;
+            case 1:
+                enemy = new Mage(chosenName);
+                break;
+            case 2:
+                enemy = new Archer(chosenName);
+                break;
+            case 3:
+                enemy = new Assassin(chosenName);
+                break;
+            default:
+                enemy = new Healer(chosenName);
+                break;
         }
-        
+
         if (isBoss) {
-            enemy.setHp(enemy.getHp() + 70);       
+            enemy.setHp(enemy.getHp() + 70);
             enemy.setAttackPower(enemy.getAttackPower() + 15);
         }
-        
+
         return enemy;
     }
 }
