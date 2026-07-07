@@ -1,3 +1,5 @@
+package src.character;
+
 public class Mage extends Character {
     public Mage(String name) {
         super(

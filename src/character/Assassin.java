@@ -1,3 +1,5 @@
+package src.character;
+
 public class Assassin extends Character {
     public Assassin(String name) {
         super(

@@ -1,4 +1,6 @@
+package src.character;
 import java.util.ArrayList;
+import src.item.Item;
 
 public abstract class Character {
     protected String name;

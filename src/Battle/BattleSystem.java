@@ -1,5 +1,7 @@
 import java.util.Random;
 import java.util.Scanner;
+import src.character.Character;
+import src.item.Item;
 
 public class BattleSystem {
     private final Scanner input = new Scanner(System.in);

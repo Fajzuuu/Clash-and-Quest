@@ -1,3 +1,6 @@
+package src.item;
+import src.character.Character;
+
 public class Potion extends Item {
     private int healAmount;
 

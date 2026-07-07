@@ -1,3 +1,5 @@
+package src.character;
+
 public class Archer extends Character { 
     private double criticalChance;
 

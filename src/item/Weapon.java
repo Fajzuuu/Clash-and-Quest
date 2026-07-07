@@ -1,3 +1,6 @@
+package src.item;
+import src.character.Character;
+
 public class Weapon extends Item {
     private int attackBonus;
 

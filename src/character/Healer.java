@@ -1,3 +1,5 @@
+package src.character;
+
 public class Healer extends Character {
     public Healer(String name) {
         super(

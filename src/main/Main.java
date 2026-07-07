@@ -1,5 +1,8 @@
 import java.util.Random;
 import java.util.Scanner;
+import src.character.Character;
+import src.character.*;
+import src.item.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,6 +20,14 @@ public class Main {
         System.out.println(">>=======================================================================<<");
         System.out.print("Masukkan nama karakter Anda: ");
         String name = scanner.nextLine();
+
+        System.out.println("===== MENU =====");
+        System.out.println("1. New Game");
+        System.out.println("2. Load Game");
+        System.out.print("Pilihan : ");
+
+        int menu = scanner.nextInt();
+        scanner.nextLine();
 
         System.out.println("Pilih Class: 1. Warrior | 2. Mage | 3. Archer | 4. Assassin | 5. Healer");
         System.out.print("Pilihan: ");

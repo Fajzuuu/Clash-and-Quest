@@ -1,3 +1,6 @@
+package src.item;
+import src.character.Character;
+
 public abstract class Item {
     protected String name;
 

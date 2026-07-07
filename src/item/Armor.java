@@ -1,3 +1,6 @@
+package src.item;
+import src.character.Character;
+
 public class Armor extends Item {
     private int defenseBonus;
 
@@ -10,7 +13,7 @@ public class Armor extends Item {
     public String getDescription() {
     return "(+" + defenseBonus + " DEF)";
     }
-    public void use(Character target) {
+    public void use(src.character.Character target) {
         System.out.println(target.getName() + " menggunakan " + name + "!");
         
         int newDefense = target.getDefense() + defenseBonus;
